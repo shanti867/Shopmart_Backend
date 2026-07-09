@@ -16,22 +16,15 @@ public class MainCategoryService {
     private MainCategoryRepository repository;
 
     public MainCategory save(String name, MultipartFile pic, Boolean status) throws Exception {
-
         File uploadFolder = new File(System.getProperty("user.dir"), "uploads");
-
         if (!uploadFolder.exists()) {
             uploadFolder.mkdirs();
         }
-
         String imageName = pic.getOriginalFilename();
-
         File destination = new File(uploadFolder, imageName);
-
         pic.transferTo(destination);
-
         // Save data into database
         MainCategory category = new MainCategory();
-
         category.setName(name);
         category.setPic(imageName);
         category.setStatus(status);
