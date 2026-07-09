@@ -35,6 +35,7 @@ public class SubCategoryService {
         return repository.findAll();
     }
     public void delete(Long id){
+
         repository.deleteById(id);
     }
     public SubCategory update(Long id, String name, MultipartFile pic, Boolean status)throws Exception{

@@ -25,10 +25,11 @@ public class SubCategoryController {
         return service.getAll();
     }
     @DeleteMapping("/{id}")
-    public void delete(Long id){
+    public void delete(@PathVariable Long id){
+
         service.delete(id);
     }
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public SubCategory updateCategory(@PathVariable Long id, @RequestParam (value = "name", required=false)String name, @RequestParam(value = "pic", required = false)MultipartFile pic, @RequestParam(value = "status", required=false)Boolean status)throws Exception{
         return service.update(id, name, pic, status);
     }
