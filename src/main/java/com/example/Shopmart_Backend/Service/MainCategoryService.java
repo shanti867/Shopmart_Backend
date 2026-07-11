@@ -29,10 +29,14 @@ public class MainCategoryService {
         category.setPic(imageName);
         category.setStatus(status);
 
-        return repository.save(category);
+        MainCategory savedCategory = repository.save(category);
+        // Generate custom ID
+        savedCategory.setMainCategoryId("MC" + String.format("%03d", savedCategory.getId()));
+        // Save again
+        return repository.save(savedCategory);
+
     }
     public List<MainCategory> getAll() {
-
         return repository.findAll();
     }
     // Delete
@@ -48,8 +52,7 @@ public class MainCategoryService {
         if (name != null && !name.trim().isEmpty()) {
             category.setName(name);
         }
-        String uploadPath = System.getProperty("user.dir") + File.separator + "uploads";
-        File uploadFolder = new File(uploadPath);
+        File uploadFolder = new File(System.getProperty("user.dir"), "uploads");
 
         if (!uploadFolder.exists()) {
             uploadFolder.mkdirs();

@@ -29,7 +29,9 @@ public class SubCategoryService {
         category.setPic(imageName);
         category.setStatus(status);
 
-        return repository.save(category);
+        SubCategory savedCategory = repository.save(category);
+        savedCategory.setSubCategoryId("SBC" + String.format("%03d",savedCategory.getId()));
+        return repository.save(savedCategory);
     }
     public List<SubCategory> getAll(){
         return repository.findAll();
