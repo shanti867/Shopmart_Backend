@@ -49,7 +49,7 @@ public class BrandService {
         if(!uploadFolder.exists()){
             uploadFolder.mkdir();
         }
-        if(pic != null && pic.isEmpty()){
+        if(pic != null && !pic.isEmpty()){
             String imageName = pic.getOriginalFilename();
             File destination = new File(uploadFolder, imageName);
             pic.transferTo(destination);
