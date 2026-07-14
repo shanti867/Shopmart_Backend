@@ -13,6 +13,8 @@ public class Faq {
     @Column(unique = true)
     private String faqId;
     private String question;
+
+    @Lob
     private String answer;
     private Boolean status;
 

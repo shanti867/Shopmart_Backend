@@ -23,7 +23,7 @@ public class FaqService {
         return repository.findAll();
     }
     public void delete(Long id){
-        repository.findById(id);
+        repository.deleteById(id);
     }
     public Faq update(Long id, Faq faq)throws Exception{
         Faq oldFaq = repository.findById(id).orElseThrow();
