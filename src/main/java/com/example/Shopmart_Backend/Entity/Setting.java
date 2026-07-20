@@ -13,6 +13,7 @@ public class Setting {
     private String address;
     private String map1;
     private String map2;
+    private String siteName;
     private String email;
     private String phone;
     private String whatsapp;

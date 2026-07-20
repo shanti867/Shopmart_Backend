@@ -18,8 +18,24 @@ public class SettingService {
     public List<Setting> getAll(){
         return repository.findAll();
     }
-    public Setting update(Setting setting){
+    public Setting update(Long id, Setting setting){
+        Setting oldSetting = repository.findById(id).orElseThrow();
+        oldSetting.setSiteName(setting.getSiteName());
+        oldSetting.setAddress(setting.getAddress());
+        oldSetting.setMap1(setting.getMap1());
+        oldSetting.setMap2(setting.getMap2());
+        oldSetting.setEmail(setting.getEmail());
+        oldSetting.setPhone(setting.getPhone());
+        oldSetting.setWhatsapp(setting.getWhatsapp());
+        oldSetting.setFacebook(setting.getFacebook());
+        oldSetting.setTwitter(setting.getTwitter());
+        oldSetting.setInstagram(setting.getInstagram());
+        oldSetting.setLinkedin(setting.getLinkedin());
+        oldSetting.setYoutube(setting.getYoutube());
+        oldSetting.setPrivacyPolicy(setting.getPrivacyPolicy());
+        oldSetting.setTermsAndConditions(setting.getTermsAndConditions());
+        oldSetting.setRefundPolicy(setting.getRefundPolicy());
 
-        return repository.save(setting);
+        return repository.save(oldSetting);
     }
 }
